@@ -8,11 +8,27 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Plan a trip — Booking inquiry | Mountain Delights" },
-      { name: "description", content: "Share your destination, dates, group size and budget. A real person replies within two working days with a draft route and honest pricing." },
-      { property: "og:title", content: "Plan an Indian mountain trip — Mountain Delights" },
-      { property: "og:description", content: "Tell us about your trip and we'll come back with a draft itinerary." },
+      {
+        title:
+          "Plan an Indian Mountain Trip | Ladakh, Himachal, Sikkim | Mountain Delights",
+      },
+      {
+        name: "description",
+        content:
+          "Share your destination, dates, group size and budget. A real person at Mountain Delights replies within two working days with a draft route, homestays and honest pricing for Ladakh, Himachal, Uttarakhand, Sikkim and more.",
+      },
+      {
+        property: "og:title",
+        content: "Plan an Indian mountain trip — Mountain Delights",
+      },
+      {
+        property: "og:description",
+        content:
+          "Tell us about your trip and we'll come back with a draft itinerary and fair price. No deposit until you're happy.",
+      },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
   component: ContactPage,
 });
@@ -26,6 +42,7 @@ const DESTINATIONS = [
   "Shimla",
   "Manali",
   "Rajasthan — Aravallis",
+  "Kashmir",
   "Not sure yet",
 ] as const;
 
@@ -54,7 +71,9 @@ type InquiryForm = z.input<typeof inquirySchema>;
 function ContactPage() {
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Partial<Record<keyof InquiryForm, string>>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof InquiryForm, string>>>(
+    {},
+  );
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -91,7 +110,9 @@ function ContactPage() {
 
     if (error) {
       console.error("Inquiry submit failed", error);
-      toast.error("Something went wrong. Please try again or email us directly.");
+      toast.error(
+        "Something went wrong. Please try again or email us directly.",
+      );
       return;
     }
     setSent(true);
@@ -108,17 +129,28 @@ function ContactPage() {
           <p className="mt-6 text-foreground/80 leading-relaxed">
             A few details help us draft something realistic — not a sales pitch.
             We reply within two working days with a route, suggested homestays,
-            and a fair price.
+            and a fair price for Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir
+            or the Western Ghats.
           </p>
           <div className="mt-10 space-y-4 text-sm">
             <div>
               <div className="eyebrow mb-1">Write</div>
-              <a href="mailto:info@mountaindelights.in" className="text-foreground hover:text-[var(--color-pine)]">info@mountaindelights.in</a>
+              <a
+                href="mailto:info@mountaindelights.in"
+                className="text-foreground hover:text-[var(--color-pine)]"
+              >
+                info@mountaindelights.in
+              </a>
             </div>
-              <div>
+            <div>
               <div className="eyebrow mb-1">WhatsApp</div>
               <div className="space-y-1">
-                <a href="https://wa.me/917977958220" className="block text-foreground hover:text-[var(--color-pine)]">+91 79779 58220</a>
+                <a
+                  href="https://wa.me/917977958220"
+                  className="block text-foreground hover:text-[var(--color-pine)]"
+                >
+                  +91 79779 58220
+                </a>
               </div>
             </div>
           </div>
@@ -133,28 +165,59 @@ function ContactPage() {
             <div className="py-10 text-center">
               <div className="font-serif text-2xl">Got it — talk soon.</div>
               <p className="mt-2 text-muted-foreground">
-                We'll reply from info@mountaindelights.in within two working days.
+                We'll reply from info@mountaindelights.in within two working
+                days.
               </p>
             </div>
           ) : (
             <>
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="Your name" error={errors.full_name}>
-                  <input name="full_name" required maxLength={120} className="input" placeholder="Aanya Sharma" />
+                  <input
+                    name="full_name"
+                    required
+                    maxLength={120}
+                    className="input"
+                    placeholder="Aanya Sharma"
+                  />
                 </Field>
                 <Field label="Email" error={errors.email}>
-                  <input name="email" required type="email" maxLength={254} className="input" placeholder="you@example.com" />
+                  <input
+                    name="email"
+                    required
+                    type="email"
+                    maxLength={254}
+                    className="input"
+                    placeholder="you@example.com"
+                  />
                 </Field>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <Field label="Phone / WhatsApp (optional)" error={errors.phone}>
-                  <input name="phone" type="tel" maxLength={40} className="input" placeholder="+91 98XXX XXXXX" />
+                  <input
+                    name="phone"
+                    type="tel"
+                    maxLength={40}
+                    className="input"
+                    placeholder="+91 98XXX XXXXX"
+                  />
                 </Field>
                 <Field label="Destination" error={errors.destination}>
-                  <select name="destination" required className="input" defaultValue="">
-                    <option value="" disabled>Pick a region</option>
-                    {DESTINATIONS.map((d) => <option key={d} value={d}>{d}</option>)}
+                  <select
+                    name="destination"
+                    required
+                    className="input"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Pick a region
+                    </option>
+                    {DESTINATIONS.map((d) => (
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
+                    ))}
                   </select>
                 </Field>
               </div>
@@ -167,25 +230,56 @@ function ContactPage() {
                   <input name="end_date" type="date" className="input" />
                 </Field>
                 <Field label="Travelers" error={errors.travelers}>
-                  <input name="travelers" type="number" min={1} max={50} defaultValue={2} required className="input" />
+                  <input
+                    name="travelers"
+                    type="number"
+                    min={1}
+                    max={50}
+                    defaultValue={2}
+                    required
+                    className="input"
+                  />
                 </Field>
               </div>
 
               <Field label="Budget range (per person)" error={errors.budget_range}>
-                <select name="budget_range" required className="input" defaultValue="">
-                  <option value="" disabled>Pick a range</option>
-                  {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
+                <select
+                  name="budget_range"
+                  required
+                  className="input"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Pick a range
+                  </option>
+                  {BUDGETS.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
                 </select>
               </Field>
 
               <Field label="Tell us about the trip (optional)" error={errors.message}>
-                <textarea name="message" rows={5} maxLength={2000} className="input" placeholder="Who's travelling, how slow you want to go, what you're hoping to see…" />
+                <textarea
+                  name="message"
+                  rows={5}
+                  maxLength={2000}
+                  className="input"
+                  placeholder="Who's travelling, how slow you want to go, what you're hoping to see…"
+                />
               </Field>
 
-              <button type="submit" disabled={submitting} className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="btn-primary disabled:opacity-60 disabled:cursor-not-allowed"
+              >
                 {submitting ? "Sending…" : "Send inquiry →"}
               </button>
-              <p className="text-xs text-muted-foreground">We don't share your details. No newsletter spam.</p>
+              <p className="text-xs text-muted-foreground">
+                We don't share your details. No newsletter spam.
+              </p>
             </>
           )}
         </form>
@@ -208,12 +302,22 @@ function ContactPage() {
   );
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
   return (
     <label className="block">
       <span className="eyebrow mb-2 block">{label}</span>
       {children}
-      {error ? <span className="mt-1 block text-xs text-red-600">{error}</span> : null}
+      {error ? (
+        <span className="mt-1 block text-xs text-red-600">{error}</span>
+      ) : null}
     </label>
   );
 }
