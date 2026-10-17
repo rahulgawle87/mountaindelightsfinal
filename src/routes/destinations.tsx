@@ -5,11 +5,27 @@ import { destinations } from "@/lib/destinations";
 export const Route = createFileRoute("/destinations")({
   head: () => ({
     meta: [
-      { title: "Destinations — Indian mountain regions | Mountain Delights" },
-      { name: "description", content: "Detailed notes on Ladakh, Himachal, Uttarakhand, Sikkim, Kerala, Shimla, Manali and Kashmir — altitudes, seasons, and what each region is actually known for." },
-      { property: "og:title", content: "Indian mountain destinations" },
-      { property: "og:description", content: "Routes and field-checked notes on eight mountain regions across India." },
+      {
+        title:
+          "Indian Mountain Destinations | Ladakh, Himachal, Uttarakhand, Sikkim | Mountain Delights",
+      },
+      {
+        name: "description",
+        content:
+          "Detailed guides to Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, Kerala Western Ghats, Shimla, Manali and Kashmir — altitudes, best seasons, and what each region is known for. Plan honest mountain trips with Mountain Delights.",
+      },
+      {
+        property: "og:title",
+        content: "Indian Mountain Destinations | Ladakh, Himachal, Uttarakhand, Sikkim",
+      },
+      {
+        property: "og:description",
+        content:
+          "Field-checked notes on eight mountain regions across India — when to go, how high you'll be, and what people actually travel there for.",
+      },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "/destinations" }],
   }),
   component: DestinationsPage,
 });
@@ -37,7 +53,7 @@ function DestinationsPage() {
               <div className="overflow-hidden rounded-lg">
                 <img
                   src={d.image}
-                  alt={d.name}
+                  alt={`${d.name} — ${d.region} mountain travel with Mountain Delights`}
                   width={1280}
                   height={896}
                   loading="lazy"
