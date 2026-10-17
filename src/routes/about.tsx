@@ -4,11 +4,24 @@ import { SiteLayout } from "@/components/SiteLayout";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Mountain Delights — Indian mountain trip planners" },
-      { name: "description", content: "A small team of mountain guides and trip planners based in Manali and Gangtok, building honest journeys across the Indian Himalaya and Western Ghats." },
-      { property: "og:title", content: "About Mountain Delights" },
-      { property: "og:description", content: "Who we are and how we plan trips." },
+      {
+        title:
+          "About Mountain Delights | Indian Himalaya & Western Ghats Trip Planners",
+      },
+      {
+        name: "description",
+        content:
+          "Mountain Delights is a small team of mountain guides and trip planners based in Manali, Gangtok and Munnar. We build honest journeys across Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats.",
+      },
+      { property: "og:title", content: "About Mountain Delights — Indian mountain trip planners" },
+      {
+        property: "og:description",
+        content:
+          "Who we are, how we plan trips, and why we focus on small groups and local partners across the Indian mountains.",
+      },
+      { property: "og:type", content: "website" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
@@ -21,6 +34,11 @@ function AboutPage() {
         <h1 className="mt-4 font-serif text-4xl md:text-6xl max-w-3xl leading-tight">
           A small team that grew up in these mountains.
         </h1>
+        <p className="mt-6 max-w-2xl text-lg text-foreground/80">
+          We plan honest, unhurried journeys across the Indian Himalaya and Western
+          Ghats — Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir and Kerala's
+          hill country.
+        </p>
       </section>
 
       <section className="container-prose pb-20 grid md:grid-cols-12 gap-12">
@@ -34,13 +52,21 @@ function AboutPage() {
           </p>
           <p>
             Today we're a team of eleven across Himachal, Sikkim and Kerala.
-            We plan trips the way we plan our own: pick the right window,
-            sleep where the food is good, walk further than you drive, and
-            leave room for the day the weather changes its mind.
+            We plan trips the way we plan our own: pick the right weather window,
+            sleep where the food is good, walk further than you drive, and leave
+            room for the day the weather changes its mind.
           </p>
           <p>
             We don't own the homestays, jeeps or guides we work with — they're
-            our neighbours, and most of what you pay goes to them.
+            our neighbours, and most of what you pay goes to them. That keeps trips
+            grounded in the places you actually visit, from Spiti villages to tea
+            estates above Munnar.
+          </p>
+          <p>
+            Whether you want a first-time Ladakh road trip, a quiet week in the
+            Tirthan valley, Goecha La in Sikkim, or a monsoon-shoulder visit to the
+            Western Ghats, we build the route around how the mountains actually
+            work — not a brochure checklist.
           </p>
         </div>
 
@@ -48,9 +74,18 @@ function AboutPage() {
           <div className="rounded-lg border border-border bg-card p-6">
             <div className="eyebrow">Where we work from</div>
             <ul className="mt-4 space-y-3 text-sm">
-              <li className="flex justify-between"><span>Manali, Himachal Pradesh</span><span className="text-muted-foreground">2,050 m</span></li>
-              <li className="flex justify-between"><span>Gangtok, Sikkim</span><span className="text-muted-foreground">1,650 m</span></li>
-              <li className="flex justify-between"><span>Munnar, Kerala</span><span className="text-muted-foreground">1,600 m</span></li>
+              <li className="flex justify-between">
+                <span>Manali, Himachal Pradesh</span>
+                <span className="text-muted-foreground">2,050 m</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Gangtok, Sikkim</span>
+                <span className="text-muted-foreground">1,650 m</span>
+              </li>
+              <li className="flex justify-between">
+                <span>Munnar, Kerala</span>
+                <span className="text-muted-foreground">1,600 m</span>
+              </li>
             </ul>
           </div>
           <div className="rounded-lg border border-border bg-card p-6">
@@ -68,13 +103,27 @@ function AboutPage() {
       <section className="border-t border-border bg-[oklch(0.945_0.02_78)]">
         <div className="container-prose py-20 grid md:grid-cols-3 gap-10">
           {[
-            { name: "Tenzin Norbu", role: "Co-founder · Lead guide, Himachal & Ladakh", note: "IMF-certified, fifteen years in the Western Himalaya." },
-            { name: "Anjali Menon", role: "Co-founder · Naturalist, Western Ghats", note: "Spent four years at the Periyar tiger reserve before joining." },
-            { name: "Pema Wangchuk", role: "Eastern Himalaya lead, Sikkim", note: "Born in Yuksom; runs the Goecha La trek every spring." },
+            {
+              name: "Tenzin Norbu",
+              role: "Co-founder · Lead guide, Himachal & Ladakh",
+              note: "IMF-certified, fifteen years in the Western Himalaya.",
+            },
+            {
+              name: "Anjali Menon",
+              role: "Co-founder · Naturalist, Western Ghats",
+              note: "Spent four years at the Periyar tiger reserve before joining.",
+            },
+            {
+              name: "Pema Wangchuk",
+              role: "Eastern Himalaya lead, Sikkim",
+              note: "Born in Yuksom; runs the Goecha La trek every spring.",
+            },
           ].map((p) => (
             <div key={p.name}>
               <div className="font-serif text-2xl">{p.name}</div>
-              <div className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">{p.role}</div>
+              <div className="mt-1 text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                {p.role}
+              </div>
               <p className="mt-3 text-foreground/80">{p.note}</p>
             </div>
           ))}
@@ -83,7 +132,13 @@ function AboutPage() {
 
       <section className="container-prose py-20 text-center">
         <h2 className="font-serif text-3xl md:text-4xl">Come walk with us.</h2>
-        <Link to="/contact" className="btn-primary mt-6">Get in touch →</Link>
+        <p className="mt-4 text-foreground/80 max-w-xl mx-auto">
+          Share your destination, dates and pace — we'll come back with a draft
+          route and honest pricing.
+        </p>
+        <Link to="/contact" className="btn-primary mt-6">
+          Get in touch →
+        </Link>
       </section>
     </SiteLayout>
   );
