@@ -73,20 +73,41 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mountain Delights — Indian mountain travel" },
-      { name: "description", content: "Honest, unhurried journeys across the Indian Himalaya and Western Ghats." },
-      { property: "og:title", content: "Mountain Delights — Indian mountain travel" },
-      { property: "og:description", content: "Honest, unhurried journeys across the Indian Himalaya and Western Ghats." },
+      { title: "Mountain Delights | Indian Himalaya & Western Ghats Travel" },
+      {
+        name: "description",
+        content:
+          "Plan honest, unhurried journeys across Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir and the Western Ghats. Small groups, real guides, local homestays — no filler itineraries.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Indian Himalaya travel, Ladakh trip, Himachal Pradesh tour, Uttarakhand trekking, Sikkim travel, Western Ghats, mountain travel India, small group tours India",
+      },
+      { property: "og:title", content: "Mountain Delights | Indian Himalaya & Western Ghats Travel" },
+      {
+        property: "og:description",
+        content:
+          "Honest, unhurried journeys across the Indian mountains — Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Mountain Delights" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Mountain Delights — Indian mountain travel" },
-      { name: "twitter:description", content: "Honest, unhurried journeys across the Indian Himalaya and Western Ghats." },
+      { name: "twitter:title", content: "Mountain Delights | Indian Himalaya & Western Ghats Travel" },
+      {
+        name: "twitter:description",
+        content:
+          "Honest, unhurried journeys across the Indian mountains — Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats.",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -114,7 +135,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
