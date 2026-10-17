@@ -3,13 +3,91 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { destinations, blogPosts } from "@/lib/destinations";
 import hero from "@/assets/hero-mountains.jpg";
 
+const travelAgencySchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  name: "Mountain Delights",
+  description:
+    "Honest, unhurried journeys across the Indian Himalaya and Western Ghats — Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir and more.",
+  url: "https://www.mountaindelights.in/",
+  areaServed: "India",
+  knowsAbout: [
+    "Ladakh travel",
+    "Himachal Pradesh tours",
+    "Uttarakhand trekking",
+    "Sikkim travel",
+    "Western Ghats",
+    "Indian Himalaya",
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What destinations does Mountain Delights cover?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We plan trips across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, Kashmir, Shimla, Manali and the Western Ghats of Kerala. Each region has different seasons, altitudes and travel styles.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Are Mountain Delights trips small-group or private?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We focus on small groups (around six travellers with two guides) and also plan self-paced or private itineraries. No megaphone group tours.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I plan a trip with Mountain Delights?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tell us roughly where, when, and how slow you want to travel. We reply within two working days with a draft route, recommended homestays, and a fair price. No deposit until you are happy with the plan.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When is the best time to visit Ladakh?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The main season for Ladakh is June to September. Plan for two days of acclimatisation in Leh (about 3,500 m) before driving over high passes like Khardung La or out to Nubra and Pangong.",
+      },
+    },
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mountain Delights — Honest journeys through the Indian mountains" },
-      { name: "description", content: "Small-group and self-planned trips across Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats. Real itineraries, local guides, no filler." },
-      { property: "og:title", content: "Mountain Delights — Indian mountain travel" },
-      { property: "og:description", content: "Routes, field notes and trip planning for the Indian Himalaya and Western Ghats." },
+      {
+        title:
+          "Mountain Delights — Honest journeys through the Indian mountains",
+      },
+      {
+        name: "description",
+        content:
+          "Small-group and self-planned trips across Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats. Real itineraries, local guides, homestays — no filler.",
+      },
+      {
+        property: "og:title",
+        content: "Mountain Delights — Indian mountain travel",
+      },
+      {
+        property: "og:description",
+        content:
+          "Routes, field notes and trip planning for the Indian Himalaya and Western Ghats.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.mountaindelights.in/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      { type: "application/ld+json", children: JSON.stringify(travelAgencySchema) },
+      { type: "application/ld+json", children: JSON.stringify(faqSchema) },
     ],
   }),
   component: Home,
@@ -118,6 +196,42 @@ function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* FAQ — AEO */}
+      <section className="container-prose py-20 md:py-28">
+        <div className="max-w-2xl mb-12">
+          <span className="eyebrow">FAQ</span>
+          <h2 className="mt-3 font-serif text-3xl md:text-5xl">Common questions</h2>
+          <p className="mt-4 text-foreground/80">
+            Quick answers about destinations, group size, and how planning works.
+          </p>
+        </div>
+        <div className="grid gap-6 max-w-3xl">
+          {[
+            {
+              q: "What destinations does Mountain Delights cover?",
+              a: "We plan trips across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, Kashmir, Shimla, Manali and the Western Ghats of Kerala. Each region has different seasons, altitudes and travel styles.",
+            },
+            {
+              q: "Are trips small-group or private?",
+              a: "We focus on small groups (around six travellers with two guides) and also plan self-paced or private itineraries. No megaphone group tours.",
+            },
+            {
+              q: "How do I plan a trip with you?",
+              a: "Tell us roughly where, when, and how slow you want to travel. We reply within two working days with a draft route, recommended homestays, and a fair price. No deposit until you are happy with the plan.",
+            },
+            {
+              q: "When is the best time to visit Ladakh?",
+              a: "The main season for Ladakh is June to September. Plan for two days of acclimatisation in Leh (about 3,500 m) before driving over high passes like Khardung La or out to Nubra and Pangong.",
+            },
+          ].map((item) => (
+            <div key={item.q} className="border-t border-border pt-6">
+              <h3 className="font-serif text-xl md:text-2xl">{item.q}</h3>
+              <p className="mt-3 text-foreground/80 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
