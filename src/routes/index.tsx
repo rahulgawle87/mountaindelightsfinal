@@ -18,6 +18,7 @@ const travelAgencySchema = {
     "Sikkim travel",
     "Western Ghats",
     "Indian Himalaya",
+    "small group mountain travel India",
   ],
 };
 
@@ -65,16 +66,16 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Mountain Delights – Honest Indian Mountain Journeys | Ladakh to Kerala",
+          "Indian Himalaya Tour & Small Group Mountain Travel | Mountain Delights",
       },
       {
         name: "description",
         content:
-          "Small-group, unhurried trips across the Indian Himalaya and Western Ghats. Real routes, local homestays, no tourist traps. Plan your honest mountain journey with Mountain Delights.",
+          "Plan an honest Indian Himalaya tour or small-group mountain travel across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim and Western Ghats. Real routes, local guides, unhurried journeys with Mountain Delights.",
       },
       {
         property: "og:title",
-        content: "Mountain Delights – Honest Indian Mountain Journeys",
+        content: "Indian Himalaya Tour & Small Group Mountain Travel | Mountain Delights",
       },
       {
         property: "og:description",
@@ -210,7 +211,7 @@ function Home() {
                   <h3 className="mt-1 font-serif text-xl">{d.name}</h3>
                   <p className="mt-1 text-sm text-muted-foreground">{d.region}</p>
                   <p className="mt-3 text-sm leading-relaxed text-foreground/80 line-clamp-2">
-                    {d.blurb}
+                    {d.short}
                   </p>
                 </div>
               </Link>
