@@ -38,6 +38,14 @@ const faqSchema = {
         text: "October to March is ideal for Kerala’s Western Ghats — cooler weather, clear views of tea estates around Munnar, and better access to wildlife areas like Periyar.",
       },
     },
+    {
+      "@type": "Question",
+      name: "What Indian mountain destinations does Mountain Delights cover?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "We plan trips across Ladakh, Himachal Pradesh (including Spiti, Kinnaur, Shimla and Manali), Uttarakhand, Sikkim, Kashmir, and the Western Ghats of Kerala, plus Mount Abu in the Aravallis.",
+      },
+    },
   ],
 };
 
@@ -46,26 +54,41 @@ export const Route = createFileRoute("/destinations")({
     meta: [
       {
         title:
-          "Indian Mountain Destinations – When to Go & Real Routes | Mountain Delights",
+          "Indian Mountain Destinations – Ladakh, Himachal, Sikkim & More | Mountain Delights",
       },
       {
         name: "description",
         content:
-          "Detailed guides to Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir & Kerala Ghats. Best seasons, altitudes, and what people actually travel there for. Plan with Mountain Delights.",
+          "Field guides to Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, Kashmir and Kerala Western Ghats. Best seasons, altitudes, and real routes for small-group Indian Himalaya travel.",
       },
       {
         property: "og:title",
-        content: "Indian Mountain Destinations – When to Go & Real Routes",
+        content:
+          "Indian Mountain Destinations – When to Go & Real Routes | Mountain Delights",
       },
       {
         property: "og:description",
         content:
-          "Field-checked notes on eight mountain regions — when to go, altitudes, and what people actually travel there for.",
+          "Eight mountain regions of India — seasons, altitudes, and what people actually travel there for. Plan with Mountain Delights.",
       },
       { property: "og:type", content: "website" },
+      {
+        property: "og:url",
+        content: "https://www.mountaindelights.in/destinations",
+      },
     ],
-    links: [{ rel: "canonical", href: "/destinations" }],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(faqSchema) }],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://www.mountaindelights.in/destinations",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(faqSchema),
+      },
+    ],
   }),
   component: DestinationsPage,
 });
@@ -83,8 +106,8 @@ function DestinationsPage() {
           desert; the Western Ghats are a rainforest. Below is what we know
           about each region — when to go, how high you'll be, and what people
           actually travel there for. Whether you're planning an Indian Himalaya
-          tour, a Ladakh trip, or a slower Western Ghats journey, these notes
-          help you match the right season and pace.
+          tour, a Ladakh trip, Spiti circuit, or a slower Western Ghats
+          journey, these notes help you match the right season and pace.
         </p>
       </section>
 
@@ -99,8 +122,11 @@ function DestinationsPage() {
               <div className="aspect-[4/3] overflow-hidden rounded-lg">
                 <img
                   src={d.image}
-                  alt={d.name}
+                  alt={`${d.name} — ${d.short}`}
+                  width={800}
+                  height={600}
                   className="h-full w-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -110,7 +136,7 @@ function DestinationsPage() {
               </p>
               <h2 className="mt-2 font-serif text-3xl md:text-4xl">{d.name}</h2>
               <p className="mt-4 text-lg leading-relaxed text-foreground/85">
-                {d.description}
+                {d.long}
               </p>
               <dl className="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
                 <div>
@@ -119,11 +145,13 @@ function DestinationsPage() {
                 </div>
                 <div>
                   <dt className="font-medium text-muted-foreground">Best season</dt>
-                  <dd className="mt-0.5">{d.season}</dd>
+                  <dd className="mt-0.5">{d.bestSeason}</dd>
                 </div>
               </dl>
-              {d.highlights && (
-                <p className="mt-4 text-sm text-foreground/70">{d.highlights}</p>
+              {d.knownFor?.length > 0 && (
+                <p className="mt-4 text-sm text-foreground/70">
+                  Known for: {d.knownFor.join(" · ")}
+                </p>
               )}
               <Link
                 to="/contact"
@@ -134,6 +162,38 @@ function DestinationsPage() {
             </div>
           </article>
         ))}
+      </section>
+
+      <section className="container-prose pb-24 border-t border-border pt-16">
+        <h2 className="font-serif text-2xl md:text-3xl">Common questions</h2>
+        <dl className="mt-8 space-y-6 max-w-2xl">
+          <div>
+            <dt className="font-medium">Best time for Ladakh?</dt>
+            <dd className="mt-1 text-sm text-foreground/80">
+              June–September. Acclimatise two days in Leh before high passes.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-medium">How long for Himachal or Spiti?</dt>
+            <dd className="mt-1 text-sm text-foreground/80">
+              6–7 days for Shimla–Manali; 10–12 days for a full Spiti or Kinnaur
+              circuit.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-medium">Small groups only?</dt>
+            <dd className="mt-1 text-sm text-foreground/80">
+              Yes — around six travellers with two guides, or private
+              itineraries. No coach tours.
+            </dd>
+          </div>
+        </dl>
+        <Link
+          to="/contact"
+          className="mt-10 inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+        >
+          Plan your mountain trip →
+        </Link>
       </section>
     </SiteLayout>
   );

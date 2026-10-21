@@ -15,8 +15,12 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <header className="border-b border-border/70 bg-background/80 backdrop-blur sticky top-0 z-40">
         <div className="container-prose flex items-center justify-between h-16">
           <Link to="/" className="flex items-baseline gap-2">
-            <span className="font-serif text-xl tracking-tight text-foreground">Mountain Delights</span>
-            <span className="hidden sm:inline text-[11px] uppercase tracking-[0.22em] text-muted-foreground">India</span>
+            <span className="font-serif text-xl tracking-tight text-foreground">
+              Mountain Delights
+            </span>
+            <span className="hidden sm:inline text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              India
+            </span>
           </Link>
           <nav className="hidden md:flex items-center gap-7 text-sm">
             {nav.slice(1).map((n) => (
@@ -30,7 +34,9 @@ export function SiteLayout({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
-          <Link to="/contact" className="btn-primary text-xs px-4 py-2">Plan a trip</Link>
+          <Link to="/contact" className="btn-primary text-xs px-4 py-2">
+            Plan a trip
+          </Link>
         </div>
       </header>
 
@@ -42,7 +48,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <div className="font-serif text-xl">Mountain Delights</div>
             <p className="mt-3 text-sm text-muted-foreground">
               Small-group journeys and self-planned routes across the Indian
-              mountains — from the Trans-Himalaya to the Western Ghats.
+              Himalaya and Western Ghats — Ladakh, Himachal, Uttarakhand,
+              Sikkim, Kashmir and Kerala hill country.
             </p>
           </div>
           <div>
@@ -50,23 +57,54 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <ul className="space-y-2 text-sm">
               {nav.map((n) => (
                 <li key={n.to}>
-                  <Link to={n.to} className="hover:text-foreground text-foreground/75">{n.label}</Link>
+                  <Link
+                    to={n.to}
+                    className="hover:text-foreground text-foreground/75"
+                  >
+                    {n.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <div className="eyebrow mb-3">Elsewhere</div>
+            <div className="eyebrow mb-3">Contact</div>
             <ul className="space-y-2 text-sm">
-              <li><a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-foreground text-foreground/75">Instagram</a></li>
-              <li><a href="https://youtube.com" target="_blank" rel="noreferrer" className="hover:text-foreground text-foreground/75">YouTube</a></li>
-              <li><a href="mailto:info@mountaindelights.in" className="hover:text-foreground text-foreground/75">info@mountaindelights.in</a></li>
+              <li>
+                <a
+                  href="mailto:mountaindelights05@gmail.com"
+                  className="hover:text-foreground text-foreground/75"
+                >
+                  mountaindelights05@gmail.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/917977958220"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-foreground text-foreground/75"
+                >
+                  WhatsApp +91 79779 58220
+                </a>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-foreground text-foreground/75"
+                >
+                  Plan a trip form
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-border/70">
           <div className="container-prose py-5 flex flex-col sm:flex-row gap-2 justify-between text-xs text-muted-foreground">
-            <span>© {new Date().getFullYear()} Mountain Delights. Made in the hills.</span>
+            <span>
+              © {new Date().getFullYear()} Mountain Delights. Made in the
+              hills.
+            </span>
             <span>Travel responsibly. Pack out what you pack in.</span>
           </div>
         </div>
