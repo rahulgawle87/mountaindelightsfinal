@@ -5,6 +5,21 @@ import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Plan Your Indian Mountain Trip",
+  description:
+    "Request a free route proposal for Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir or Western Ghats travel.",
+  url: "https://www.mountaindelights.in/contact",
+  mainEntity: {
+    "@type": "TravelAgency",
+    name: "Mountain Delights",
+    email: "mountaindelights05@gmail.com",
+    telephone: "+91-79779-58220",
+  },
+};
+
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
@@ -15,7 +30,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Tell us where and when you want to go. We'll reply within 2 working days with a realistic route, recommended homestays, and transparent pricing. No pressure, no spam.",
+          "Tell us where and when you want to go in the Indian Himalaya or Western Ghats. We'll reply within 2 working days with a realistic route, homestays, and transparent pricing. No pressure.",
       },
       {
         property: "og:title",
@@ -27,8 +42,23 @@ export const Route = createFileRoute("/contact")({
           "Tell us about your trip. We'll reply in 2 working days with a draft route, homestays and fair price. No deposit until you're happy.",
       },
       { property: "og:type", content: "website" },
+      {
+        property: "og:url",
+        content: "https://www.mountaindelights.in/contact",
+      },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://www.mountaindelights.in/contact",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(contactSchema),
+      },
+    ],
   }),
   component: ContactPage,
 });
@@ -78,7 +108,9 @@ function ContactPage() {
     budget: "",
     message: "",
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof InquiryForm, string>>>({{}});
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof InquiryForm, string>>
+  >({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -116,7 +148,9 @@ function ContactPage() {
       toast.success("Inquiry sent. We'll reply within two working days.");
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong. Please try WhatsApp or email instead.");
+      toast.error(
+        "Something went wrong. Please try WhatsApp or email instead.",
+      );
     } finally {
       setSubmitting(false);
     }
@@ -128,7 +162,8 @@ function ContactPage() {
         <section className="container-prose py-24 md:py-32 text-center">
           <h1 className="font-serif text-3xl md:text-5xl">Thank you.</h1>
           <p className="mt-4 text-lg text-foreground/80 max-w-md mx-auto">
-            We've received your inquiry. A real person will reply within two working days with a draft route and pricing.
+            We've received your inquiry. A real person will reply within two
+            working days with a draft route and pricing.
           </p>
           <a
             href="/"
@@ -149,18 +184,28 @@ function ContactPage() {
           Tell us about your trip.
         </h1>
         <p className="mt-5 max-w-xl text-lg text-foreground/80">
-          A few details help us draft something realistic — not a sales pitch. We reply within two working days with a route, suggested homestays, and a fair price.
+          A few details help us draft something realistic — not a sales pitch.
+          We reply within two working days with a route, suggested homestays,
+          and a fair price for your Indian mountain journey.
         </p>
         <div className="mt-8 flex flex-wrap gap-6 text-sm">
           <div>
             <p className="font-medium text-muted-foreground">Write</p>
-            <a href="mailto:mountaindelights05@gmail.com" className="text-primary hover:underline">
+            <a
+              href="mailto:mountaindelights05@gmail.com"
+              className="text-primary hover:underline"
+            >
               mountaindelights05@gmail.com
             </a>
           </div>
           <div>
             <p className="font-medium text-muted-foreground">WhatsApp</p>
-            <a href="https://wa.me/917977958220" className="text-primary hover:underline" target="_blank" rel="noreferrer">
+            <a
+              href="https://wa.me/917977958220"
+              className="text-primary hover:underline"
+              target="_blank"
+              rel="noreferrer"
+            >
               +91 79779 58220
             </a>
           </div>
@@ -170,7 +215,9 @@ function ContactPage() {
       <section className="container-prose pb-24">
         <form onSubmit={handleSubmit} className="max-w-xl space-y-5">
           <div>
-            <label className="block text-sm font-medium mb-1.5">Full name *</label>
+            <label className="block text-sm font-medium mb-1.5">
+              Full name *
+            </label>
             <input
               type="text"
               value={form.full_name}
@@ -178,7 +225,9 @@ function ContactPage() {
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               placeholder="Your name"
             />
-            {errors.full_name && <p className="mt-1 text-xs text-destructive">{errors.full_name}</p>}
+            {errors.full_name && (
+              <p className="mt-1 text-xs text-destructive">{errors.full_name}</p>
+            )}
           </div>
           <div>
             <label className="block text-sm font-medium mb-1.5">Email *</label>
@@ -189,10 +238,14 @@ function ContactPage() {
               className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
               placeholder="you@example.com"
             />
-            {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+            {errors.email && (
+              <p className="mt-1 text-xs text-destructive">{errors.email}</p>
+            )}
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Phone / WhatsApp</label>
+            <label className="block text-sm font-medium mb-1.5">
+              Phone / WhatsApp
+            </label>
             <input
               type="tel"
               value={form.phone}
@@ -202,7 +255,9 @@ function ContactPage() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Destination *</label>
+            <label className="block text-sm font-medium mb-1.5">
+              Destination *
+            </label>
             <select
               value={form.destination}
               onChange={(e) => update("destination", e.target.value)}
@@ -210,14 +265,22 @@ function ContactPage() {
             >
               <option value="">Select...</option>
               {DESTINATIONS.map((d) => (
-                <option key={d} value={d}>{d}</option>
+                <option key={d} value={d}>
+                  {d}
+                </option>
               ))}
             </select>
-            {errors.destination && <p className="mt-1 text-xs text-destructive">{errors.destination}</p>}
+            {errors.destination && (
+              <p className="mt-1 text-xs text-destructive">
+                {errors.destination}
+              </p>
+            )}
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1.5">Travel dates</label>
+              <label className="block text-sm font-medium mb-1.5">
+                Travel dates
+              </label>
               <input
                 type="text"
                 value={form.travel_dates}
@@ -227,7 +290,9 @@ function ContactPage() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1.5">Group size</label>
+              <label className="block text-sm font-medium mb-1.5">
+                Group size
+              </label>
               <input
                 type="text"
                 value={form.group_size}
@@ -246,12 +311,16 @@ function ContactPage() {
             >
               <option value="">Select...</option>
               {BUDGETS.map((b) => (
-                <option key={b} value={b}>{b}</option>
+                <option key={b} value={b}>
+                  {b}
+                </option>
               ))}
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1.5">Anything else?</label>
+            <label className="block text-sm font-medium mb-1.5">
+              Anything else?
+            </label>
             <textarea
               value={form.message}
               onChange={(e) => update("message", e.target.value)}
