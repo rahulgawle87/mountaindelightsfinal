@@ -8,7 +8,7 @@ const travelAgencySchema = {
   "@type": "TravelAgency",
   name: "Mountain Delights",
   description:
-    "Honest, unhurried journeys across the Indian Himalaya and Western Ghats — Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir and more.",
+    "Honest, unhurried journeys across the Indian Himalaya and Western Ghats — Ladakh, Himachal, Uttarakhand, Sikkim and more.",
   url: "https://www.mountaindelights.in/",
   areaServed: {
     "@type": "Country",
@@ -40,7 +40,7 @@ const organizationSchema = {
   name: "Mountain Delights",
   url: "https://www.mountaindelights.in/",
   description:
-    "Small-group Indian mountain travel — Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir and Western Ghats.",
+    "Small-group Indian mountain travel — Ladakh, Himachal, Uttarakhand, Sikkim and Western Ghats.",
   email: "mountaindelights05@gmail.com",
   founder: {
     "@type": "Person",
@@ -70,7 +70,7 @@ const faqSchema = {
       name: "What destinations does Mountain Delights cover?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We plan trips across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim, Kashmir, Shimla, Manali and the Western Ghats of Kerala. Each region has different seasons, altitudes and travel styles.",
+        text: "We plan trips across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim and the Western Ghats of Kerala. Each region has different seasons, altitudes and travel styles.",
       },
     },
     {
@@ -169,10 +169,9 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const featured = destinations.slice(0, 6);
+  const featured = destinations;
   return (
     <SiteLayout>
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -213,7 +212,6 @@ function Home() {
         </div>
       </section>
 
-      {/* What we do */}
       <section className="container-prose py-20 md:py-28">
         <div className="grid md:grid-cols-12 gap-12 items-start">
           <div className="md:col-span-5">
@@ -226,8 +224,8 @@ function Home() {
             <p>
               Weather windows, festival dates, road openings, the right village
               to sleep in. Then we get out of your way. Whether you want a
-              Ladakh road trip, Spiti circuit, Kashmir valley stay, or a quiet
-              Western Ghats week in Munnar — we plan it without filler.
+              Ladakh road trip, Spiti circuit, or a quiet Western Ghats week in
+              Munnar — we plan it without filler.
             </p>
             <div className="grid sm:grid-cols-3 gap-6 pt-4">
               <div>
@@ -253,7 +251,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Destinations */}
       <section className="bg-muted/40 py-20 md:py-28">
         <div className="container-prose">
           <div className="flex flex-wrap items-end justify-between gap-4">
@@ -274,8 +271,8 @@ function Home() {
             {featured.map((d, i) => (
               <Link
                 key={d.slug}
-                to="/destinations"
-                hash={d.slug}
+                to="/destinations/$slug"
+                params={{ slug: d.slug }}
                 className="group block overflow-hidden rounded-lg bg-background shadow-sm transition hover:shadow-md"
               >
                 <div className="aspect-[4/3] overflow-hidden">
@@ -304,7 +301,6 @@ function Home() {
         </div>
       </section>
 
-      {/* FAQ — visible for AEO / users */}
       <section className="container-prose py-20 md:py-28">
         <span className="eyebrow">Questions</span>
         <h2 className="mt-3 font-serif text-3xl md:text-4xl max-w-2xl">
@@ -314,10 +310,9 @@ function Home() {
           <div>
             <dt className="font-serif text-xl">What destinations do you cover?</dt>
             <dd className="mt-2 text-foreground/80 leading-relaxed">
-              Ladakh, Himachal Pradesh (including Spiti and Kinnaur), Uttarakhand,
-              Sikkim, Kashmir, Shimla, Manali, and the Western Ghats of Kerala.
-              Each region has its own season and altitude — we match the trip to
-              the mountain, not the other way around.
+              Ladakh, Himachal Pradesh (including Spiti, Kinnaur and Shimla as a
+              ridge base), Uttarakhand, Sikkim, and the Western Ghats of Kerala.
+              Each region has its own season and altitude.
             </dd>
           </div>
           <div>
@@ -348,7 +343,6 @@ function Home() {
         </dl>
       </section>
 
-      {/* CTA */}
       <section className="container-prose pb-20 md:pb-28">
         <div className="max-w-2xl">
           <span className="eyebrow">Plan a trip</span>
