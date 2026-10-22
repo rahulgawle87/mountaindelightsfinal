@@ -49,7 +49,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
             <p className="mt-3 text-sm text-muted-foreground">
               Small-group journeys and self-planned routes across the Indian
               Himalaya and Western Ghats — Ladakh, Himachal, Uttarakhand,
-              Sikkim, Kashmir and Kerala hill country.
+              Sikkim and Kerala hill country.
             </p>
           </div>
           <div>
@@ -65,6 +65,15 @@ export function SiteLayout({ children }: { children: ReactNode }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/guides/$slug"
+                  params={{ slug: "best-time-ladakh" }}
+                  className="hover:text-foreground text-foreground/75"
+                >
+                  Guides
+                </Link>
+              </li>
             </ul>
           </div>
           <div>

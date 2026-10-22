@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { destinations, guides } from "@/lib/destinations";
 
 const BASE_URL = "https://www.mountaindelights.in";
 const LASTMOD = new Date().toISOString().slice(0, 10);
@@ -8,14 +9,31 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const paths: { path: string; priority: string; changefreq: string }[] =
-          [
-            { path: "/", priority: "1.0", changefreq: "weekly" },
-            { path: "/destinations", priority: "0.9", changefreq: "weekly" },
-            { path: "/contact", priority: "0.9", changefreq: "monthly" },
-            { path: "/about", priority: "0.7", changefreq: "monthly" },
-            { path: "/blog", priority: "0.6", changefreq: "weekly" },
-          ];
+        const staticPaths: {
+          path: string;
+          priority: string;
+          changefreq: string;
+        }[] = [
+          { path: "/", priority: "1.0", changefreq: "weekly" },
+          { path: "/destinations", priority: "0.9", changefreq: "weekly" },
+          { path: "/contact", priority: "0.9", changefreq: "monthly" },
+          { path: "/about", priority: "0.7", changefreq: "monthly" },
+          { path: "/blog", priority: "0.6", changefreq: "weekly" },
+        ];
+
+        const destPaths = destinations.map((d) => ({
+          path: `/destinations/${d.slug}`,
+          priority: "0.85",
+          changefreq: "monthly",
+        }));
+
+        const guidePaths = guides.map((g) => ({
+          path: `/guides/${g.slug}`,
+          priority: "0.75",
+          changefreq: "monthly",
+        }));
+
+        const paths = [...staticPaths, ...destPaths, ...guidePaths];
         const urls = paths
           .map(
             (p) =>
