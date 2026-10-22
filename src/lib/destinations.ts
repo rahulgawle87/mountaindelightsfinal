@@ -166,7 +166,7 @@ export const destinations: Destination[] = [
       { month: "Aug", rating: "Possible", reason: "Monsoon; landslides possible." },
       { month: "Sep", rating: "Good", reason: "Post-monsoon clarity for many circuits." },
       { month: "Oct", rating: "Good", reason: "Clear skies; cooler high country." },
-      { month: "Nov", rating: "Possible", rating: "Possible", reason: "Late season; high passes start closing." },
+      { month: "Nov", rating: "Possible", reason: "Late season; high passes start closing." },
       { month: "Dec", rating: "Possible", reason: "Snow tourism in places; Spiti limited." },
     ],
     gettingThere:
