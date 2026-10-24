@@ -23,6 +23,7 @@ const travelAgencySchema = {
     "Indian Himalaya",
     "small group mountain travel India",
     "Spiti Valley",
+    "Ladakh trip planner",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -113,22 +114,22 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Indian Himalaya Tour & Small Group Mountain Travel | Mountain Delights",
+          "Indian Himalaya Tour | Ladakh Trip Planner & Small Group Mountain Travel | Mountain Delights",
       },
       {
         name: "description",
         content:
-          "Plan an honest Indian Himalaya tour or small-group mountain travel across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim and Western Ghats. Real routes, local guides, unhurried journeys with Mountain Delights.",
+          "Plan an honest Indian Himalaya tour or use our Ladakh trip planner for small-group mountain travel across Ladakh, Himachal Pradesh, Uttarakhand, Sikkim and Western Ghats. Real routes, local guides, unhurried journeys with Mountain Delights.",
       },
       {
         property: "og:title",
         content:
-          "Indian Himalaya Tour & Small Group Mountain Travel | Mountain Delights",
+          "Indian Himalaya Tour | Ladakh Trip Planner & Small Group Mountain Travel | Mountain Delights",
       },
       {
         property: "og:description",
         content:
-          "Small-group, unhurried trips across Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats. Real routes, local guides, no filler.",
+          "Small-group, unhurried trips across Ladakh, Himachal, Uttarakhand, Sikkim and the Western Ghats. Real routes, local guides, no filler. Ideal for Ladakh trip planning.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://www.mountaindelights.in/" },
@@ -137,7 +138,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:title",
         content:
-          "Indian Himalaya Tour & Small Group Mountain Travel | Mountain Delights",
+          "Indian Himalaya Tour | Ladakh Trip Planner & Small Group Mountain Travel | Mountain Delights",
       },
       {
         name: "twitter:description",
