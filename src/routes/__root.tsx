@@ -11,6 +11,39 @@ import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 
+const SITE_URL = "https://www.mountaindelights.in";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Mountain Delights",
+  url: SITE_URL,
+  description:
+    "Small-group and custom journeys across the Indian Himalaya and Western Ghats — Ladakh, Himachal, Uttarakhand, Sikkim, Kashmir and more. Honest routes, local guides, no filler itineraries.",
+  email: "mountaindelights05@gmail.com",
+  telephone: "+91 79779 58220",
+  areaServed: {
+    "@type": "Country",
+    name: "India",
+  },
+  founder: {
+    "@type": "Person",
+    name: "Rohan Pawar",
+  },
+  sameAs: [],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: "Mountain Delights",
+  url: SITE_URL,
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  inLanguage: "en-IN",
+};
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -124,6 +157,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(organizationSchema),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(websiteSchema),
       },
     ],
   }),
