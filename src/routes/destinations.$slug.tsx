@@ -21,7 +21,15 @@ export const Route = createFileRoute("/destinations/$slug")({
   head: ({ loaderData }) => {
     const d = loaderData as Destination | undefined;
     if (!d) return {};
-    const title = `${d.name} Trip Planning | Mountain Delights`;
+    // Optimized titles for high-intent keywords
+    const titleMap: Record<string, string> = {
+      ladakh: "Ladakh Trip Planner | Small Group Tours & Itineraries | Mountain Delights",
+      "himachal-pradesh": "Himachal Pradesh Tour | Spiti & Kinnaur Small Group Travel | Mountain Delights",
+      uttarakhand: "Uttarakhand Tour | Valley of Flowers & Char Dham Planning | Mountain Delights",
+      sikkim: "Sikkim Tour | Kanchenjunga Views & Small Group Travel | Mountain Delights",
+      kerala: "Western Ghats Travel | Kerala Mountain Journeys | Mountain Delights",
+    };
+    const title = titleMap[d.slug] || `${d.name} Trip Planning | Mountain Delights`;
     const description = d.intro.slice(0, 155);
     const url = `https://www.mountaindelights.in/destinations/${d.slug}`;
     const faqSchema = {
