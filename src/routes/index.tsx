@@ -79,7 +79,7 @@ const faqSchema = {
       name: "Are Mountain Delights trips small-group or private?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We focus on small groups (around six travellers with two guides) and also plan self-paced or private itineraries. No megaphone group tours.",
+        text: "We focus on small groups (around six travellers with two guides) and also plan self-paced or private itineraries. No megaphone group tours. Ideal for small group mountain travel in India.",
       },
     },
     {
@@ -95,7 +95,7 @@ const faqSchema = {
       name: "When is the best time to visit Ladakh?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The main season for Ladakh is June to September. Plan for two days of acclimatisation in Leh (about 3,500 m) before driving over high passes like Khardung La or out to Nubra and Pangong.",
+        text: "The main season for Ladakh is June to September. Plan for two days of acclimatisation in Leh (about 3,500 m) before driving over high passes like Khardung La or out to Nubra and Pangong. Use our Ladakh trip planner approach for realistic pacing.",
       },
     },
     {
@@ -104,6 +104,22 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "We build trips around weather windows, festival dates, road openings and the right village to sleep in — then get out of your way. Independent local partners, transparent pricing, and no rented sherpa hats.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer Western Ghats travel and Kerala mountain trips?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We plan unhurried Western Ghats travel focused on Munnar tea ridges, Eravikulam shola forests, Periyar and related routes in Kerala — with the same small-group or private approach as our Himalayan trips.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is Mountain Delights suitable for first-time Indian Himalaya travellers?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We design first-time friendly itineraries with proper acclimatisation, realistic daily distances and clear guidance on altitude, permits and road conditions — especially useful for a first Ladakh or Spiti trip.",
       },
     },
   ],
@@ -321,7 +337,7 @@ function Home() {
             <dd className="mt-2 text-foreground/80 leading-relaxed">
               Small groups of about six travellers with two guides, or fully
               private / self-paced itineraries. No large coach tours and no
-              megaphones.
+              megaphones — built for small group mountain travel in India.
             </dd>
           </div>
           <div>
@@ -338,7 +354,22 @@ function Home() {
             <dd className="mt-2 text-foreground/80 leading-relaxed">
               June to September. Plan two days of acclimatisation in Leh (~3,500
               m) before high passes such as Khardung La or drives to Nubra and
-              Pangong.
+              Pangong. We treat every enquiry as a practical Ladakh trip planner.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-serif text-xl">Western Ghats / Kerala mountains?</dt>
+            <dd className="mt-2 text-foreground/80 leading-relaxed">
+              Yes. We plan quieter Western Ghats travel around Munnar, Eravikulam,
+              Periyar and related routes — same unhurried style as the Himalaya.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-serif text-xl">Good for first-time Himalaya travellers?</dt>
+            <dd className="mt-2 text-foreground/80 leading-relaxed">
+              Yes. We design first-time friendly itineraries with proper
+              acclimatisation, realistic daily distances and clear guidance on
+              altitude, permits and road conditions.
             </dd>
           </div>
         </dl>
