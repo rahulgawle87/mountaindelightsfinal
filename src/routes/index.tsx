@@ -24,6 +24,9 @@ const travelAgencySchema = {
     "small group mountain travel India",
     "Spiti Valley",
     "Ladakh trip planner",
+    "Spiti Valley trip",
+    "Indian Himalaya tour",
+    "first time Ladakh",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -120,6 +123,14 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "Yes. We design first-time friendly itineraries with proper acclimatisation, realistic daily distances and clear guidance on altitude, permits and road conditions — especially useful for a first Ladakh or Spiti trip.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you plan Spiti Valley trips from Himachal?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Spiti is one of our core Himachal routes. We plan realistic Spiti circuits with attention to road openings (Kunzum Pass), acclimatisation, and village stays rather than rushed checklist itineraries.",
       },
     },
   ],
@@ -370,6 +381,14 @@ function Home() {
               Yes. We design first-time friendly itineraries with proper
               acclimatisation, realistic daily distances and clear guidance on
               altitude, permits and road conditions.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-serif text-xl">Spiti Valley trips?</dt>
+            <dd className="mt-2 text-foreground/80 leading-relaxed">
+              Yes. Spiti is a core Himachal route for us. We plan realistic circuits
+              with attention to road openings (Kunzum), acclimatisation and village
+              stays — not rushed checklist tours.
             </dd>
           </div>
         </dl>
